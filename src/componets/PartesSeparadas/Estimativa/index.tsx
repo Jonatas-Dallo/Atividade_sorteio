@@ -1,43 +1,84 @@
 import React from "react";
 import styled from "styled-components";
 import useContexto from "../../../hooks/useContexto";
-import { mega } from "../../../styles/themes"
+import { megaTheme, quinaTheme, timemaniaTheme } from "../../../styles/themes";
+import { useLocation } from "react-router-dom";
 
 interface Props {
-    theme: any;
-    texto: any;
-    valor: any;
+  theme: any;
+  texto: any;
+  valor: any;
 }
 
 function Estimativa(props: Props) {
-    return (
-        <>
-            <BlocoEstimativa>
-                <TextoEstimativa theme={props.theme}>Estimativa de premio do próximo sorteio em: {props.texto}</TextoEstimativa>
-                <ValorEstimativa theme={props.theme}>{props.valor}</ValorEstimativa>
-            </BlocoEstimativa>
-        </>
-    );
+  return (
+    <>
+      <BlocoEstimativa>
+        <TextoEstimativa theme={props.theme}>
+          Estimativa de prêmio do próximo sorteio em: {props.texto}
+        </TextoEstimativa>
+        <ValorEstimativa theme={props.theme}>{props.valor}</ValorEstimativa>
+      </BlocoEstimativa>
+    </>
+  );
 }
 
 const Index = () => {
-    const { megasena } = useContexto();
-    const { quina } = useContexto();
-    const theme = mega;
-    const valorFormatado =
-        megasena && megasena.valorEstimadoProximoConcurso
-            ? `${megasena.valorEstimadoProximoConcurso.toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL'
-            })}`
-            : "Valor Indisponível"; // Caso o valor não esteja disponível, exiba uma mensagem padrão
+  const { megasena, quina, timemania } = useContexto();
+  const location = useLocation();
 
+  let theme: any;
+  let estimativaText: string;
+  let valorEstimado: string;
 
-    return (
-        <>
-            <Estimativa theme={theme} valor={valorFormatado} texto={megasena.dataProximoConcurso} />
-        </>
-    );
+  switch (location.pathname) {
+    case "/Mega":
+      theme = megaTheme;
+      estimativaText = megasena.dataProximoConcurso
+      valorEstimado = megasena.valorEstimadoProximoConcurso
+        ? megasena.valorEstimadoProximoConcurso.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })
+        : "Valor Indisponível";
+      break;
+    case "/Quina":
+      theme = quinaTheme;
+      estimativaText = quina.dataProximoConcurso
+      valorEstimado = quina.valorEstimadoProximoConcurso
+        ? quina.valorEstimadoProximoConcurso.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })
+        : "Valor Indisponível";
+      break;
+    case "/Timemania":
+      theme = timemaniaTheme;
+      estimativaText = timemania.dataProximoConcurso
+      valorEstimado = timemania.valorEstimadoProximoConcurso
+        ? timemania.valorEstimadoProximoConcurso.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })
+        : "Valor Indisponível";
+      break;
+    default:
+      theme = megaTheme;
+      estimativaText = megasena.dataProximoConcurso
+      valorEstimado = megasena.valorEstimadoProximoConcurso
+        ? megasena.valorEstimadoProximoConcurso.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })
+        : "Valor Indisponível";
+      break;
+  }
+
+  return (
+    <>
+      <Estimativa theme={theme} valor={valorEstimado} texto={estimativaText} />
+    </>
+  );
 };
 
 const BlocoEstimativa = styled.div`
@@ -48,7 +89,7 @@ const BlocoEstimativa = styled.div`
 
 const TextoEstimativa = styled.div`
   font-size: 0.9rem;
-  color: #4c556c;   
+  color: #4c556c;
 `;
 
 const ValorEstimativa = styled.div`

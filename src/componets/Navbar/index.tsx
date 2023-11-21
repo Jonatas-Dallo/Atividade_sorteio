@@ -16,11 +16,11 @@ function Navbar() {
                         ) : <Link to="Mega" className='mega' onClick={() => { setSelecionado('Mega-sena') }}>Megasena</Link>}
                     </div>
 
-                    {/* <div className='NavbarItem'>
-                        {selecionado == 'Loto' ? (
-                            <Link to="Loto" className='selecionado'>Lotofácil</Link>
-                        ) : <Link to="Loto" className='loto' onClick={() => { setSelecionado('Loto') }}>Lotofácil</Link>}
-                    </div> */}
+                    <div className='NavbarItem'>
+                        {selecionado == 'Lotofacil' ? (
+                            <Link to="Lotofacil" className='selecionado'>Lotofácil</Link>
+                        ) : <Link to="Lotofacil" className='loto' onClick={() => { setSelecionado('Loto') }}>Lotofácil</Link>}
+                    </div>
                     <div className='NavbarItem'>
                         {selecionado == 'Quina' ? (
                             <Link to="Quina" className='selecionado'>Quina</Link>

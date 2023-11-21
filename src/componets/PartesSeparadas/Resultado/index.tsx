@@ -1,15 +1,32 @@
 import React from "react";
 import styled from "styled-components";
 import useContexto from "../../../hooks/useContexto";
-import { mega } from "../../../styles/themes"
+import { megaTheme, quinaTheme, timemaniaTheme } from "../../../styles/themes";
+import { useLocation } from "react-router-dom";
 
 interface Props {
-  dezenas: any[];
   theme: any;
 }
 
 function Resultado(props: Props) {
-  const { dezenas, theme } = props;
+  const { theme } = props;
+  const { megasena, quina, timemania } = useContexto();
+
+  let dezenas: any[] = [];
+
+  switch (theme) {
+    case megaTheme:
+      dezenas = megasena ? megasena.dezenas : [];
+      break;
+    case quinaTheme:
+      dezenas = quina ? quina.dezenas : [];
+      break;
+    case timemaniaTheme:
+      dezenas = timemania ? timemania.dezenas : [];
+      break;
+    default:
+      break;
+  }
 
   if (!dezenas || dezenas.length === 0) {
     return <div>Nenhuma dezena disponível</div>;
@@ -29,14 +46,26 @@ function Resultado(props: Props) {
 }
 
 const Index = () => {
-  const { megasena } = useContexto();
-  const theme = mega;
+  const location = useLocation();
 
-  if (!megasena || !megasena.dezenas || megasena.dezenas.length === 0) {
-    return <div>Nenhuma dezena disponível</div>;
+  let theme: any;
+
+  switch (location.pathname) {
+    case "/Mega":
+      theme = megaTheme;
+      break;
+    case "/Quina":
+      theme = quinaTheme;
+      break;
+    case "/Timemania":
+      theme = timemaniaTheme;
+      break;
+    default:
+      theme = megaTheme;
+      break;
   }
 
-  return <Resultado dezenas={megasena.dezenas} theme={theme} />;
+  return <Resultado theme={theme} />;
 };
 
 const LinhaBola = styled.div`
@@ -53,7 +82,7 @@ const Bola = styled.div`
 `;
 
 const BolaTexto = styled.div`
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: ${(props) => props.theme.bolafonte};
   width: 2vw;

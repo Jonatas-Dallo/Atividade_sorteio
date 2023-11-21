@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { mega, quina, timemania } from "../../../styles/themes";
+import { megaTheme, quinaTheme, timemaniaTheme } from "../../../styles/themes";
 import trevoT from "../../../assets/trevo-timemania.png";
 import trevoM from "../../../assets/trevo-megasena.png";
 import trevoQ from "../../../assets/trevo-quina.png";
@@ -11,6 +11,8 @@ interface Props {
   nome: string;
   trevo: string;
 }
+
+var nome = "";
 
 function LoteriaNome(props: Props) {
   return (
@@ -26,25 +28,27 @@ const Index = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  let theme;
-  let trevo;
+  let theme: any;
+  let trevo: any;
 
   switch (location.pathname) {
     case "/Mega":
-      theme = mega;
+      theme = megaTheme;
       trevo = trevoM;
+      nome = "Megasena";
       break;
     case "/Quina":
-      theme = quina;
+      theme = quinaTheme;
       trevo = trevoQ;
+      nome = "Quina";
       break;
     case "/Timemania":
-      theme = timemania;
+      theme = timemaniaTheme;
       trevo = trevoT;
+      nome = "Timemania";
       break;
     default:
-      // Caso padrão, pode ser o tema que desejar
-      theme = mega;
+      theme = megaTheme;
       trevo = trevoM;
       break;
   }
@@ -52,7 +56,7 @@ const Index = () => {
   return (
     <>
       <Container>
-        <LoteriaNome nome="Mega Sena" theme={theme} trevo={trevo} />
+        <LoteriaNome nome={nome} theme={theme} trevo={trevo} />
       </Container>
     </>
   );

@@ -1,52 +1,59 @@
 import React from "react";
-import { type } from "os";
 import styled from "styled-components";
 import useContexto from "../../../hooks/useContexto";
-import { mega } from "../../../styles/themes"
-
+import { megaTheme, quinaTheme, timemaniaTheme } from "../../../styles/themes";
+import { useLocation } from "react-router-dom";
 
 interface Props {
-    theme: any; // ajuste conforme necessário
-    texto: any;
+  theme: any;
+  texto: any;
 }
 
-
-
 function Acumulou(props: Props) {
-    const { megasena } = useContexto();
-
-
-    return (
-        <>
-            <TextoAcumulou theme={props.theme}>
-                {megasena.quantidadeGanhadores === 0 ?
-                    "ACUMULOU!"
-                    :
-                    `${megasena.quantidadeGanhadores} Ganhadores`}
-
-            </TextoAcumulou>
-
-        </>
-    );
+  return (
+    <>
+      <TextoAcumulou theme={props.theme}>
+        {props.texto === 0 ? "ACUMULOU!" : `${props.texto} Ganhadores`}
+      </TextoAcumulou>
+    </>
+  );
 }
 
 const Index = () => {
-    const { megasena } = useContexto();
-    const theme = mega;
+  const location = useLocation();
+  const { megasena, quina, timemania } = useContexto();
 
-    return (
-        <>
-            <Acumulou texto={megasena.quantidadeGanhadores} theme={theme} />
-        </>
-    )
+  let theme: any;
+  let quantidadeGanhadores: any;
+
+  switch (location.pathname) {
+    case "/Mega":
+      theme = megaTheme;
+      quantidadeGanhadores = megasena.quantidadeGanhadores;
+      break;
+    case "/Quina":
+      theme = quinaTheme;
+      quantidadeGanhadores = quina.quantidadeGanhadores;
+      break;
+    case "/Timemania":
+      theme = timemaniaTheme;
+      quantidadeGanhadores = timemania.quantidadeGanhadores;
+      break;
+    default:
+      theme = megaTheme;
+      quantidadeGanhadores = megasena.quantidadeGanhadores;
+      break;
+  }
+
+  return <Acumulou texto={quantidadeGanhadores} theme={theme} />;
 };
 
 const TextoAcumulou = styled.div`
-    padding-left: 10px;
-    margin-top: 15px;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: ${(props) => props.theme?.acumulou};
-`
+  padding-left: 10px;
+  margin-top: 15px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: ${(props) => props.theme?.acumulou};
+`;
 
 export default Index;

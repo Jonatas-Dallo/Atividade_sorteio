@@ -24,9 +24,10 @@ function Rotas() {
     return (
         <Routes>
             <Route path="*" element={<Carregando />} />
+            <Route path="/Lotofacil" element={<Lotofacil />} />
             <Route path="/Mega" element={<PaginasFragmentadas />} />
-            <Route path="/Quina" element={<Quinasena />} />
-            <Route path="/Timemania" element={<Timemania />} />
+            <Route path="/Quina" element={<PaginasFragmentadas />} />
+            <Route path="/Timemania" element={<PaginasFragmentadas />} />
         </Routes>
     );
 }
