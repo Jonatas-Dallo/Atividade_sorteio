@@ -16,6 +16,7 @@ function Provider({ children }: any) {
             loteria.get().then((data) => { setMegasena(data.megasena); setLotofacil(data.lotofacil); setQuina(data.quina); setTimemania(data.timemania) })
         }
         , [])
+
     return (
         <Contexto.Provider value={{ megasena, lotofacil, quina, timemania }}>
             {children}

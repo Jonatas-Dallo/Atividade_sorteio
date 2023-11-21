@@ -1,11 +1,11 @@
 import React from 'react';
-import useContexto from "../../hooks/useContexto";
-import trevo from '../../assets/trevo-lotofacil.png';
+import useContexto from "../../../hooks/useContexto";
+import trevo from '../../../assets/trevo-lotofacil.png';
 import {
   LotoBlocoPrincipal, LotoBloco, LotoNome, LotoBlocoEstimativa, LotoTextoEstimativa, LotoValorEstimativa, LotoBlocoDireito, LotoLinhaGanhadores, LotoGanhadores, LotoTextoGanhadores, LotoDataConcurso,
 } from './style';
 
-function Lotofacil() {
+function LotofacilCompleta() {
   const { lotofacil } = useContexto();
   let lista1 = [];
   let lista2 = [];
@@ -81,4 +81,4 @@ function Lotofacil() {
   );
 }
 
-export default Lotofacil;
+export default LotofacilCompleta;

@@ -11,7 +11,6 @@ export const MegaBlocoPrincipal = styled.div`
 
 export const MegaBloco = styled.div`
   display: flex;
-  border: 3px solid red;
 `;
 
 export const MegaNome = styled.span`
@@ -27,7 +26,6 @@ export const MegaBlocoEstimativa = styled.div`
   width: 15rem;
   margin-left: 45px;
   margin-top: 20px;
-  border: 3px solid red;
 `;
 
 export const MegaTextoEstimativa = styled.div`
@@ -44,15 +42,12 @@ export const MegaValorEstimativa = styled.div`
 
 export const MegaBlocoDireita = styled.div`
   margin-left: 50px;
-  border: 3px solid blue;
 `;
 
 export const MegaBlocoEsquerda = styled.div`
-border: 3px solid blue;
 `;
 
 export const MegaLinhaBola = styled.div`
-  border: 3px solid red;
   display: flex;
 `;
 
@@ -72,7 +67,6 @@ export const MegaTextoAcumulou = styled.div`
   font-size: 1.8rem;
   font-weight: 600;
   color: #0066b3;
-  border: 3px solid red;
 `;
 
 export const MegaDataConcurso = styled.div`
@@ -80,5 +74,4 @@ export const MegaDataConcurso = styled.div`
   margin-top: 15px;
   font-size: 0.9rem;
   color: #4c556c;
-  border: 3px solid red;
 `;

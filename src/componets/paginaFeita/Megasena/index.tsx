@@ -1,9 +1,9 @@
-import useContexto from "../../hooks/useContexto";
+import useContexto from "../../../hooks/useContexto";
 import { MegaBlocoPrincipal, MegaBlocoEsquerda, MegaBlocoEstimativa, MegaTextoEstimativa, MegaValorEstimativa, MegaBlocoDireita, MegaLinhaBola, MegaBola, MegaTextoAcumulou, MegaDataConcurso, MegaNome, MegaBloco } from './style'; // Importe seus estilos aqui
-import trevo from '../../assets/trevo-megasena.png';
-import Navbar from "../Navbar";
+import trevo from '../../../assets/trevo-megasena.png';
+import Navbar from "../../Navbar";
 
-function Megasena() {
+function MegasenaCompleta() {
   const { megasena } = useContexto();
 
   return (
@@ -53,4 +53,4 @@ function Megasena() {
   );
 }
 
-export default Megasena;
+export default MegasenaCompleta;
