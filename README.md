@@ -1,46 +1,33 @@
-# Getting Started with Create React App
+**Descrição da Atividade: Desenvolvimento de Aplicativo Web de Resultados de Loterias**
+ Fazer um aplicativo web para mostrar os dados do último sorteio da Mega-sena, Quina e 
+Timemania, sendo cada sorteio em uma página distinta acessível pelas rotas /megasena, /quina e /timemania, 
+respectivamente. A página deverá ser organizada em componentes estilizados usando styled-components.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Objetivos:**
+- Utilização de React TS para construção da aplicação, com ênfase em requisições HTTP, contexto, hooks e rotas.
+- Estilização dos componentes utilizando styled-components e temas CSS.
 
-## Available Scripts
+**Rodando o Projeto:**
+1. Execute `npm install` para instalar as dependências.
+2. Execute `npm start` para iniciar a aplicação. Acesse-a em [http://localhost:3003](http://localhost:3003).
 
-In the project directory, you can run:
+**Requisitos Funcionais:**
+a) Consumir os resultados disponíveis na API [https://servicebus2.caixa.gov.br/portaldeloterias/api/home/ultimos-resultados](https://servicebus2.caixa.gov.br/portaldeloterias/api/home/ultimos-resultados).
+b) Implementar rotas para /timemania, /megasena e /quina.
 
-### `npm start`
+**Requisitos Não Funcionais:**
+a) Desenvolver a aplicação usando React TS.
+b) Utilizar os seguintes pacotes: `@fontsource/roboto`, `axios`.
+c) A aplicação deverá rodar na porta 3003.
+d) Ícone da página deve ser [favicon.ico](https://loterias.caixa.gov.br/Style%20Library/images/favicon.ico).
+e) Utilizar a fonte Roboto em todos os textos com o pacote `@fontsource/roboto`.
+f) Utilizar axios para requisições HTTP.
+g) Criar componentes apenas com styled-components, com estilos CSS anexados aos componentes.
+h) Estruturar os componentes conforme especificado, utilizando apenas styled-components para definição de estilos.
+i) Criar páginas com as marcações Principal e Carregando. Ambas devem conter as marcações NomeLoteria, Estimativa, Resultado, Acumulou e Data.
+j) Propagar cores através do `<ThemeProvider>`.
+k) Armazenar temas no módulo `styles/theme.ts`.
+l) Exibir mensagem de carregando centralizada na tela vertical e horizontal enquanto o resultado não estiver disponível.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Temas:**
+styles/theme.ts
